@@ -3,6 +3,8 @@ Cards = [""]*52
 number = 1
 count = 0
 cnt = 1
+
+#Initializing the array with only the card number
 for i in range(52):
     if count == 4:
         number = number + 1
@@ -13,6 +15,7 @@ for i in range(52):
         Cards[i] = str(number)
     count = count + 1
 
+#Adding the suite of the card to the array
 for s in range(52):
     if cnt == 1:
         Cards[s] = Cards[s] + " - S"
@@ -25,6 +28,7 @@ for s in range(52):
         cnt = 1
     cnt = cnt + 1
 
+#Shuffling and the printing the deck (remove the lines 33 and 34 if you dont want the deck to print)
 random.shuffle(Cards)
 for v in range(52):
     print(Cards[v])
