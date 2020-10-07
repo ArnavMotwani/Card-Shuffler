@@ -1,49 +1,10 @@
 import random as r
 
-Cards = [""] * 52
-number = 1
-count = 0
-cnt = 1
-rank = 0
+def generateShuffledPack():
+    suites = ["C", "S", "H", "D"] # Generating Suites
+    cards = ["A", "J", "Q", "K"]+["0"+str(_) if _ < 10 else str(_) for _ in range(2, 11)] # Generating cards per suite
+    pack = [card+" - "+suite for card in cards for suite in suites] # Generating unshuffled pack
+    for card in r.sample(pack, 52): # Generating shuffled pack and displaying it
+        print(card)
 
-
-def numberInit():
-    # Initializing the array with only the card number
-    global rank, count
-    for i in range(52):
-        if count == 4:
-            rank = rank + 1
-            count = 0
-        if rank <= 9:
-            Cards[i] = "0" + str(rank)
-        else:
-            Cards[i] = str(rank)
-        count = count + 1
-
-
-def suiteInit():
-    # Adding the suite of the card to the array
-    global cnt
-    for s in range(52):
-        if cnt == 1:
-            Cards[s] = Cards[s] + " - S"
-        if cnt == 2:
-            Cards[s] = Cards[s] + " - H"
-        if cnt == 3:
-            Cards[s] = Cards[s] + " - C"
-        if cnt == 4:
-            Cards[s] = Cards[s] + " - D"
-            cnt = 1
-        cnt = cnt + 1
-
-
-def shuffling():
-    # Shuffling and the printing the deck (remove the lines 33 and 34 if you dont want the deck to print)
-    r.shuffle(Cards)
-    for v in range(52):
-        print(Cards[v])
-
-
-numberInit()
-suiteInit()
-shuffling()
+generateShuffledPack()
